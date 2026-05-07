@@ -1,3 +1,10 @@
+---
+title: bingOS
+---
+[[index|🏠 Return to Hub]] [🐈‍⬛ Project's Repository](https://github.com/michaelcalb/bingOS)
+
+---
+
 > [!NOTE] This OS was designed for legacy BIOS and it uses a 32-bit kernel. [[#Clarification]]
 # Introduction
 Have you ever wondered, how can you simply press the power button on your PC and suddenly your whole OS appears in front of you? All that button does is just enable energy to pass through the hardware, so how does this work?

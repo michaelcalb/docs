@@ -1,3 +1,9 @@
-# Documentation Hub
+---
+title: The Hub
+---
+[🌐 Main Site](https://michas.dev)
 
-* [[bingOS/index|bingOS Documentation]]
+---
+## Documentations
+
+* [[bingOS/index|bingOS]]
