@@ -1,7 +1,7 @@
 ---
 title: bingOS
 ---
-[[index|🏠 Return to Hub]] [🐈‍⬛ Project's Repository](https://github.com/michaelcalb/bingOS)
+[[index|🏠 Return to Hub]] [🐈‍⬛ Project Repository](https://github.com/michaelcalb/bingOS)
 
 ---
 
@@ -249,12 +249,12 @@ gdt_descriptor:
     dw gdt_end - gdt_start - 1
     dd gdt_start
 ```
->Changing the CPU from 16-bit (Real Mode) to 32-bit (Protected Mode) is a big conceptual shift. From now on, the code no longer refers to memory as a physical address but as an index to a valid and secure place. You might also be wondering what the hell is the GDT (Global Descriptor Table).
->
+Changing the CPU from 16-bit (Real Mode) to 32-bit (Protected Mode) is a big conceptual shift. From now on, the code no longer refers to memory as a physical address but as an index to a valid and secure place. You might also be wondering what the hell is the GDT (Global Descriptor Table).
+
 Until now, all the segment registers stored physical pieces of memory address. It was basically raw math both to write and read memory, but there was **no security**. Any program could set a segment register value to anything and overwrite any part of the code. Entering 32-bit Protected Mode helps to prevent that from happening by using the **Global Descriptor Table**.
 
->Now, each segment register holds a **Selector**, which is just an index number pointing to a row in a highly secure database table (the GDT) that holds information like the **Base Address** and **Size Limit** on each row, referring to different indexes.
->
+Now, each segment register holds a **Selector**, which is just an index number pointing to a row in a highly secure database table (the GDT) that holds information like the **Base Address** and **Size Limit** on each row, referring to different indexes.
+
 The GDT for this OS has a **Flat Memory Model** set up, meaning both the code and data segments start at address `0x00000000` and span the full 4 GB of addressable memory. This effectively gives the kernel unrestricted access to all memory. This is the same model used by Linux and most modern OSs. In those systems, the actual memory protection is handled by a different mechanism called paging, not by segmentation.
 - `dq 0`: the x86 CPU hardware mandates that the very first entry in the GDT must be completely empty. If any code accidentally loads a null selector (index `0`) into a segment register, the CPU instantly triggers a fault instead of letting the program access random memory. `dq` means Define Quad-word, which uses 8 bytes (**every GDT entry is 8 bytes long**).
 - `gdt_code:`
