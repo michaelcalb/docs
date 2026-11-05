@@ -7,3 +7,4 @@ title: The Hub
 ## Documentations
 
 * [[bingOS/index|bingOS]]
+* [[validation|osu!rmc]]
